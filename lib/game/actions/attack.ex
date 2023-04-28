@@ -21,6 +21,10 @@ defmodule ExMon.Game.Actions.Attack do
   defp calculate_total_life(life, damage), do: life - damage
 
   defp update_opponent_life(remaining_life, opponent) do
-    opponent |> Game.fetch_player() |> Map.put(:life, remaining_life)
+    opponent |> Game.fetch_player() |> Map.put(:life, remaining_life) |> update_game(opponent)
+  end
+
+  defp update_game(damaged_opponent, opponent) do
+    Game.info() |> Map.put(opponent, damaged_opponent) |> Game.update()
   end
 end
