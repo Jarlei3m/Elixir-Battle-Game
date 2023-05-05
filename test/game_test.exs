@@ -8,14 +8,14 @@ defmodule ExMon.GameTest do
       player = Player.build("Cloud", :chute, :soco, :cura)
       computer = Player.build("Sephiroth", :chute, :soco, :cura)
 
-      initial_value = %{
+      expected_response = %{
         computer: computer,
         player: player,
         turn: :player,
         status: :started
       }
 
-      assert initial_value = Game.start(computer, player)
+      assert expected_response = Game.start(computer, player)
     end
   end
 
